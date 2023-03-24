@@ -41,3 +41,28 @@ function index(req, res) {
 });
 }
 
+function show(req, res) {
+    BookModel.findById(req.params.id)
+    .then(function(book){
+        res.render('books/show', { book: book});
+    })
+    .catch(function(err){
+        console.log(err);
+        res.send(err);
+    });
+}
+function favorite(req, res) {
+    //Find the book by id and update the favorite value to true
+    BookModel.findByIdAndUpdate(req.params.id, {favorite: false})
+    .then(function(){
+        res.redirect(`/books/${req.params.id}`);
+    })
+    .catch(function(err) {
+        console.log(err);
+
+    })
+    .catch(function(err) {
+        console.log(err);
+        res.send(err);
+    });
+}
