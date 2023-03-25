@@ -6,8 +6,8 @@ module.exports = {
     create,
     index,
     show,
-    favorite,
-    unfavorite
+    // favorite,
+    // unfavorite
 };
 function newBook(req, res) {
     res.render('books/new');
