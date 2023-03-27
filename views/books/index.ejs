@@ -5,6 +5,7 @@
       <th>Title</th>
       <th>Author</tr>
       <th>Genre</th>
+      <th>Year</th>
       <th></th>
     </tr>
   </thead>
@@ -12,7 +13,9 @@
     <% books.forEach(function(b) { %>
       <tr>
         <td><%= b.title %></td>
-        <td><%= b.releaseYear %></td>
+        <td><%= b.author %></td>
+        <td><%= b.genre %></td>
+        <td><%= b.yearPublished %></td>
         <td><a href="/books/<%= b._id %>">DETAILS</a></td>
         <td><a href="/books/<%= b._id %>/favorite">ADD TO FAVORITES</a></td>
       </tr>

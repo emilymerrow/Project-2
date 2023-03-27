@@ -1,5 +1,6 @@
 // load the env consts
 require('dotenv').config();
+const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
@@ -10,8 +11,11 @@ const passport = require('passport');
 const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
 
-const booksRouter = require('./routes/books');
 
+const booksRouter = require('./routes/books');
+const indexRouter = require('./routes/index');
+const favoritesRouter = require('./routes/favorites');
+const authorsRouter = require('./routes/authors');
 // create the Express app
 const app = express();
 
@@ -54,7 +58,7 @@ app.use(cookieParser());
 
 
 // Add this middleware BELOW passport middleware
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   res.locals.user = req.user; // assinging a property to res.locals, makes that said property (user) availiable in every
   // single ejs view
   next();
@@ -63,6 +67,9 @@ app.use(function (req, res, next) {
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
 app.use('/books', booksRouter);
+
+app.use('/', favoritesRouter);
+app.use('/', authorsRouter);
 
 // invalid request, send 404 page
 app.use(function(req, res) {

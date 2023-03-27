@@ -1,0 +1,19 @@
+<% include('../partials/header') %>
+
+<!-- the template for the form where users can submit a new book -->
+<form id="new-form" action="/books" method="POST">
+    <label>Title:</label>
+        <input type="text" name="title">
+    <label>Author:</label>
+        <input type="text" name="author">
+    <label>Year Published:</label>
+        <input type="text" name="yearPublished">
+    <label>Genre:</label>
+        <input type="text" name="genre">
+    <label>Is it a Favorite:</label>
+        <input type="checkbox" name="favorite">
+        <input type="submit" value="Add Book">
+
+</form>
+
+<% include('../partials/footer') %> 

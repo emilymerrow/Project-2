@@ -1,0 +1,64 @@
+<%-include('../partials/header') %>
+
+<!-- show.ejs file is for displaying a 
+    single book with the ability to add or remove 
+    the book from the user's fav list -->
+
+<section id="show-page">
+    <div>Title</div>
+    <div>
+    <%= book.title %>
+    </div>
+    <div>Publication Year:</div>
+    <div>
+        <%= book.yearPublished %>
+    </div>
+    <div>Author</div>
+    <div>
+        <%= book.author %>
+    </div>
+    <div>Genre:</div>
+    <div>
+        <%= book.genre %>
+    </div>
+    <div>Favorites:</div>
+    <div>
+        <% if (book.favorites && book.favorites.includes(user._id)) { %>
+            Yes
+          <% } else { %>
+            No
+          <% } %>
+        </div>
+    <!-- start favorite button -->
+<%  if (user) {  %>
+    <form id="add-favorite-form" method="POST" action="/books/<%= book._id %>/favorites">
+      <% if (book.favorites && book.favorites.includes(user._id)) { %>
+        <input type="hidden" name="_method" value="DELETE"> <!-- allows the user to remove a book from their fav list -->
+        <button type="submit">Remove from Favorites</button>
+     <% } else { %>
+        <button type="submit">Add to Favorites</button>
+      <% } %>
+    </form>
+<% } %>
+           <!-- end favorite button --> 
+</section> 
+        
+        <br><br>
+        <h2>My Favorites</h2>
+        <% if (user) { %> <!-- If there is a user logged in -->
+            <% if (book.favorites && book.favorites.length) { %>
+                <ul>
+                    <% book.favorites.forEach(function(favorite) { %>
+                        <li><%= favorite.title %> by <%= favorite.author %></li>
+                        <% }); %>
+                </ul>
+                <% } else { %>
+                    <h5>No favorite books yet</h5>
+                    <% } %>
+                    <% } else { %>
+                      <span>Please login to see your favorite books</span>
+                <% } %>
+                <br><br>
+
+               
+                <%- include('../partials/footer') %>
