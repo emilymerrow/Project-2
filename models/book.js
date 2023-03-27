@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 //Define the Embedded Schema 
 const favoriteSchema = new mongoose.Schema( {
-       _id: mongoose.Schema.Types.ObjectId,
         is_favorite: {type: Boolean, default: false},
         user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
       

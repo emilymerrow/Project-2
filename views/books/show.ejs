@@ -22,13 +22,7 @@
         <%= book.genre %>
     </div>
     <div>Favorites:</div>
-    <div>
-        <% if (book.favorites && book.favorites.includes(user._id)) { %>
-            Yes
-          <% } else { %>
-            No
-          <% } %>
-        </div>
+   
     <!-- start favorite button -->
 <%  if (user) {  %>
     <form id="add-favorite-form" method="POST" action="/books/<%= book._id %>/favorites">

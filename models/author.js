@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const authorSchema = new Schema({
   name: {type: String, required: true, unique: true},
-  born: Date
+  
 }, {
   timestamps: true
 });

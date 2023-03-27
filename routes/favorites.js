@@ -3,10 +3,8 @@ const router = express.Router();    //used to define routes for app
 const favoriteCtrl = require('../controllers/favorites');
 
 // Favorite a book
-//router.post('/books/:id/favorites', favoriteCtrl.create);
-router.post('/books/:id/favorites', function(req, res) {
-    // add code to favorite a book for current user
-  });
+router.post('/books/:id/favorites', favoriteCtrl.create);
+
 
 //unfavorite a book
 

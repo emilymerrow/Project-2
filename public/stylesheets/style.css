@@ -1,3 +1,4 @@
+
  .brand-logo {
   margin-left: 15px;
 }
@@ -101,11 +102,13 @@ nav > a.active {
 
 table {
   font-size: 20px;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 table thead th {
   padding: 5px;
-  border-bottom: 2px solid #424748;
+  border-bottom: 2px solid #ba80ba;
 }
 
 table td {
@@ -139,7 +142,7 @@ table td {
   font-weight: bold;
 }
 
- /* #add-favorite-form {
+ #add-favorite-form {
    display: grid;
    grid-template-columns: auto auto;
    grid-gap: 1rem;
@@ -215,5 +218,18 @@ input[type="reset"]:hover {
   max-width: 960px;
   padding: 0 15px;
 }
+
+#list th:nth-child(1),
+#list th:nth-child(2) {
+  grid-column: span 2;
+}
+
+#list th:nth-child(3),
+#list th:nth-child(4) {
+  grid-column: span 1;
+}
+
+ 
+
 
  
