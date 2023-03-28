@@ -8,8 +8,8 @@ router.post('/books/:id/favorites', favoriteCtrl.create);
 
 //unfavorite a book
 
-//router.delete('/books/:id/favorites', function(req, res) {
-//router.delete('/books/:id/favorites', favoriteCtrl.delete);
+// router.delete('/books/:id/favorites', function(req, res) {
+// router.delete('/books/:id/favorites', favoriteCtrl.delete);
 
 
 module.exports = router;

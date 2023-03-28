@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const booksCtrl = require('../controllers/books');
 const isLoggedIn = require('../config/auth')
+const BookModel = require('../models/book');
 
 
 router.get('/', booksCtrl.index);  // Get all books and render the index view
@@ -13,39 +14,9 @@ router.post('/:id/favorite', booksCtrl.favorite); //favorites functionality
 
 
 
-// Favorite a book
-router.post('/books/:id/favorite', function(req, res) {
-    // logic to add book to favorites for current user
-    const bookId = req.params.id;
-    // Add the current user's ID to the book's fav array
-    BookModel.findByIdAndUpdate(bookId, {
-      $addToSet: { favorites: req.user._id },
-    })
-    .then(function() {
-      res.redirect(`/books/${[bookId]}`);
-    })
-    .catch(function(err) {
-      console.log(err);
-      res.send(err);
-    });
-  });
-  
-  // Unfavorite a book
-  router.delete('/books/:id/favorite', function(req, res) {
-    // logic to remove book from favorites for current user
-    const bookId = req.params.id;
 
-    // Remove the current user's ID from the book's fav array
-    BookModel.findByIdAndUpdate(bookId, {
-      $pull: { favorites: req.user._id },
-    })
-    .then(function() {
-      res.redirect(`/books/${bookId}`);
-    })
-    .catch(function(err) {
-      console.log(err);
-      res.send(err);
-    });
-  });
+  
+  //Unfavorite a book
+  router.delete('/:id/favorite',booksCtrl.delete);
 
   module.exports = router;

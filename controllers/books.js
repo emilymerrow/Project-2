@@ -8,6 +8,7 @@ module.exports = {
   show,
   favorite,
   unfavorite,
+  delete: deleteFavorite
 };
 
 function newBook(req, res) {
@@ -32,7 +33,7 @@ function create(req, res) {
     //     req.body.favorite = true;
     //     bookWeCreated.favorites.push(req.body);
     //   }
-
+    
       res.redirect(`/books/${bookWeCreated._id}`);
     })
     .catch(function (err) {
@@ -59,7 +60,7 @@ function show(req, res) {
     .populate("favorites") // pass the name of the key, with the id/id's
     .exec() // to execute the populate
     .then(function (bookDoc) {
-      console.log(bookDoc); // <- bookDoc is the object from the database!
+      console.log(bookDoc,'this is the bookDoc for Book'); // <- bookDoc is the object from the database!
 
       // Goal: TO find all of the users that have favorited the book
       // 1. find the book (bookDoc) so we know what users have favorited it
@@ -87,7 +88,7 @@ function show(req, res) {
 
 function favorite(req, res) {
   const bookId = req.params.id;
-  BookModel.findByIdAndUpdate(bookId, {
+  BookModel.findById(bookId, {
     $addToSet: { favorites: req.user._id },
   })
     .then(() => {
@@ -98,5 +99,38 @@ function favorite(req, res) {
       res.send(err);
     });
 }
+function deleteFavorite(req, res) {
+    // logic to remove book from favorites for current user
+    const bookId = req.params.id;
+
+    // Remove the current user's ID from the book's fav array
+    BookModel.findById(bookId)
+    .then(function(bookDoc) {
+      bookDoc.favorites.pop()
+      bookDoc.save()
+      res.redirect(`/books/${bookId}`);
+    })
+    .catch(function(err) {
+      console.log(err);
+      res.send(err);
+    });
+  }
 
 function unfavorite(req, res) {}
+
+exports.favorite = function(req, res) {
+    const bookId = req.params.id;
+  
+    // Add the current user's ID to the book's fav array
+    BookModel.findById(bookId, {
+      $addToSet: { favorites: req.user._id },
+    })
+    .then(function() {
+      res.redirect(`/books/${[bookId]}`);
+    })
+    .catch(function(err) {
+      console.log(err);
+      res.send(err);
+    });
+};
+

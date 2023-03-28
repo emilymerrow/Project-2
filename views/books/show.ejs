@@ -22,8 +22,7 @@
         <%= book.genre %>
     </div>
     <div>Favorites:</div>
-   
-    <!-- start favorite button -->
+      <!-- start favorite button -->
 <%  if (user) {  %>
     <form id="add-favorite-form" method="POST" action="/books/<%= book._id %>/favorites">
       <% if (book.favorites && book.favorites.includes(user._id)) { %>
@@ -33,6 +32,9 @@
         <button type="submit">Add to Favorites</button>
       <% } %>
     </form>
+    <form id="remove-from-favorite-form" method="POST" action="/books/<%= book._id%>/favorite?_method=DELETE">
+        <input type="submit" value="DELETE">
+        </form>
 <% } %>
            <!-- end favorite button --> 
 </section> 
@@ -43,11 +45,12 @@
             <% if (book.favorites && book.favorites.length) { %>
                 <ul>
                     <% book.favorites.forEach(function(favorite) { %>
-                        <li><%= favorite.title %> by <%= favorite.author %></li>
+                        <li><%= book.title %> by <%= book.author %></li>
                         <% }); %>
                 </ul>
+                
                 <% } else { %>
-                    <h5>No favorite books yet</h5>
+                    <h5>This book is not in your favorites</h5>
                     <% } %>
                     <% } else { %>
                       <span>Please login to see your favorite books</span>

@@ -8,7 +8,7 @@ function create(req, res) {
     .then(function (bookDocument) {
       console.log(bookDocument);
       const favorite = { is_favorite: true, user_id: req.user._id };
-      bookDocument.favorites.push(favorite);
+      bookDocument.favorites[0] = favorite;
       console.log(bookDocument);
       bookDocument.save().then(function () {
         res.redirect(`/books/${req.params.id}`);

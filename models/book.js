@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const favoriteSchema = new mongoose.Schema( {
         is_favorite: {type: Boolean, default: false},
         user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+
+       
       
 }, { timestamps: true });
  
@@ -31,4 +33,7 @@ const bookSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+favoriteSchema.methods.getBookTitle = function() {
+  return this.parent().title;
+};
 module.exports = mongoose.model("Book", bookSchema);

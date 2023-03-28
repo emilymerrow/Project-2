@@ -2,22 +2,31 @@
 <table id="list">
   <thead>
     <tr>
+      <img src="https://embed.cdn.pais.scholastic.com/v1/channels/tso/products/identifiers/isbn/9780060254926/primary/renditions/700">
       <th>Title</th>
-      <th>Author</tr>
+      <th>Author</th>
       <th>Genre</th>
       <th>Year</th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% books.forEach(function(b) { %>
+      <% console.log(b)  %>
       <tr>
         <td><%= b.title %></td>
         <td><%= b.author %></td>
         <td><%= b.genre %></td>
         <td><%= b.yearPublished %></td>
         <td><a href="/books/<%= b._id %>">DETAILS</a></td>
-        <td><a href="/books/<%= b._id %>/favorite">ADD TO FAVORITES</a></td>
+        <td>
+          <% if (b.favorites[0]) { %>
+            <button disabled>FAVORITED</button>
+          <% } else { %>
+            <a href="/books/<%= b._id %>/favorite">ADD TO FAVORITES</a>
+          <% } %>
+        </td>
       </tr>
       <% }); %>
     </tbody>
