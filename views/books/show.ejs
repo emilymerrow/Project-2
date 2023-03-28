@@ -24,7 +24,7 @@
     <div>Favorites:</div>
       <!-- start favorite button -->
 <%  if (user) {  %>
-    <form id="add-favorite-form" method="POST" action="/books/<%= book._id %>/favorites">
+    <form id="add-favorite-form" method="POST" action="/favorites/books/<%= book._id %>/favorites">
       <% if (book.favorites && book.favorites.includes(user._id)) { %>
         <input type="hidden" name="_method" value="DELETE"> <!-- allows the user to remove a book from their fav list -->
         <button type="submit">Remove from Favorites</button>

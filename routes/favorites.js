@@ -4,7 +4,7 @@ const favoriteCtrl = require('../controllers/favorites');
 
 // Favorite a book
 router.post('/books/:id/favorites', favoriteCtrl.create);
-
+router.get('/:id', favoriteCtrl.show);   // Get a single book by ID and render the show view
 
 //unfavorite a book
 

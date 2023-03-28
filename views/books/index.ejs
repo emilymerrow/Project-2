@@ -20,13 +20,15 @@
         <td><%= b.genre %></td>
         <td><%= b.yearPublished %></td>
         <td><a href="/books/<%= b._id %>">DETAILS</a></td>
-        <td>
-          <% if (b.favorites[0]) { %>
-            <button disabled>FAVORITED</button>
-          <% } else { %>
-            <a href="/books/<%= b._id %>/favorite">ADD TO FAVORITES</a>
-          <% } %>
-        </td>
+        <% if (user) { %>
+          <td>
+            <% if (user && b.favorites[0]) { %>
+              <button disabled>FAVORITED</button>
+            <% } else { %>
+              <a href="/books/<%= b._id %>/favorite">ADD TO FAVORITES</a>
+            <% } %>
+          </td>
+        <% } %> 
       </tr>
       <% }); %>
     </tbody>

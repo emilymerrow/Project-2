@@ -66,7 +66,7 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/books', booksRouter);
 
-app.use('/', favoritesRouter);
+app.use('/favorites', favoritesRouter);
 app.use('/', authorsRouter);
 
 // When the user favorites a book, add its ID to a cookie

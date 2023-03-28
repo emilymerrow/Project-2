@@ -1,6 +1,6 @@
 const BookModel = require("../models/book");
 
-module.exports = {create };
+module.exports = {create,show };
 
 function create(req, res) {
   //Find the book by id and update the favorite value to true
@@ -20,3 +20,16 @@ function create(req, res) {
       res.send(err);
     });
 }
+function show(req, res) {
+    BookModel.find({ 'favorites.user_id': req.params.id })
+    .populate({
+      path: 'favorites.user_id',
+    })
+    .then(function(books){
+        console.log(books);
+        res.render("books/favorites", {
+            favoriteBooks: books, 
+          });
+    })
+    
+  }

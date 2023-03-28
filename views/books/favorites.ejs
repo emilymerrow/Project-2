@@ -1,0 +1,17 @@
+<br><br>
+<h2>My Favorites</h2>
+<% if (user) { %> <!-- If there is a user logged in -->
+    <% if (favoriteBooks && favoriteBooks.length > 0 ) { %>
+        <ul>
+            <% favoriteBooks.forEach(function(book) { %>
+                <li><%= book.title %> by <%= book.author %></li>
+                <% }); %>
+        </ul>
+        
+        <% } else { %>
+            <h5>This book is not in your favorites</h5>
+            <% } %>
+            <% } else { %>
+              <span>Please login to see your favorite books</span>
+        <% } %>
+        <br><br>
