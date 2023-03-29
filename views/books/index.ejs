@@ -23,11 +23,10 @@
         <% if (user) { %>
           <td>
             <% if (user && b.favorites[0]) { %>
-              <button disabled>FAVORITED</button>
-            <% } else { %>
-              <a href="/books/<%= b._id %>/favorite">ADD TO FAVORITES</a>
+              <i class="fa fa-heart" aria-hidden="true"></i>
             <% } %>
           </td>
+          
         <% } %> 
       </tr>
       <% }); %>

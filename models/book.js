@@ -13,6 +13,9 @@ const favoriteSchema = new mongoose.Schema( {
 const bookSchema = new mongoose.Schema(
   {
     //mongoose schema code
+    image: {
+      type: String,
+    },
     title: {
       type: String,
       required: true,

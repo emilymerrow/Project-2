@@ -1,8 +1,15 @@
+<%- include('../partials/header') %>
+<style>
+     body {
+      background-image: url('https://c0.wallpaperflare.com/preview/909/659/786/book-girl-magic-fairy-tales.jpg');
+      background-size: cover;
+    } 
+  </style>
 <br><br>
 <h2>My Favorites</h2>
 <% if (user) { %> <!-- If there is a user logged in -->
     <% if (favoriteBooks && favoriteBooks.length > 0 ) { %>
-        <ul>
+        <ul class="favorite-list">
             <% favoriteBooks.forEach(function(book) { %>
                 <li><%= book.title %> by <%= book.author %></li>
                 <% }); %>
@@ -15,3 +22,7 @@
               <span>Please login to see your favorite books</span>
         <% } %>
         <br><br>
+      
+      
+
+      <%- include('../partials/footer') %>

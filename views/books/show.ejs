@@ -9,7 +9,7 @@
     <div>
     <%= book.title %>
     </div>
-    <div>Publication Year:</div>
+    <div>Publication Year</div>
     <div>
         <%= book.yearPublished %>
     </div>
@@ -17,11 +17,11 @@
     <div>
         <%= book.author %>
     </div>
-    <div>Genre:</div>
+    <div>Genre</div>
     <div>
         <%= book.genre %>
     </div>
-    <div>Favorites:</div>
+    
       <!-- start favorite button -->
 <%  if (user) {  %>
     <form id="add-favorite-form" method="POST" action="/favorites/books/<%= book._id %>/favorites">
@@ -40,7 +40,7 @@
 </section> 
         
         <br><br>
-        <h2>My Favorites</h2>
+        <h2>Book Details</h2>
         <% if (user) { %> <!-- If there is a user logged in -->
             <% if (book.favorites && book.favorites.length) { %>
                 <ul>

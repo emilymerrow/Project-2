@@ -39,7 +39,7 @@ body {
 
 body > nav {
   grid-area: nav;
-  background-color: #B8C0C2;
+  background-color: #238778;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -56,9 +56,8 @@ body > main {
   grid-area: main;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #E8ECEB;
-  padding: 20px;
+  align-items: center; 
+   padding: 20px;
   overflow-y: scroll;
 }
 
@@ -163,6 +162,9 @@ table td {
 	
 li {
   font-weight: bold;
+  font-size: 24px;
+  font-family: 'Open Sans', sans-serif;
+  padding-bottom: 120px;
 }
 
 .login {
@@ -231,5 +233,159 @@ input[type="reset"]:hover {
 
  
 
+/* Define a grid layout with 3 columns and 3 rows */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px; /* Add some space between grid items */
+}
+
+/* Style each book element to be a square */
+.book {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Style the book title and author */
+.book h2, .book p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Show 9 books per page */
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Style the pagination links */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  margin-right: 5px;
+}
+
+.pagination a.active {
+  background-color: #ccc;
+}
 
  
+/* Center the page content */
+#show-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  max-width: 600px;
+  margin-top: 100px;
+}
+
+/* Add some colorful and joyful styles */
+body {
+  background-color: #fff0d1 !important;
+  color: #52423d;
+}
+
+#show-page {
+  background-color: #f1e1d1;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 10px #52423d;
+}
+
+
+button[type="submit"] {
+  background-color: #ffd166;
+  color: #52423d;
+  padding: 10px 20px;
+  font-size: 24px;
+  border-radius: 10px;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #f26d5b;
+  color: #fff0d1;
+}
+#show-page div:nth-child(odd) {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: rgb(255, 42, 0);
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  
+}
+
+table#list thead img {
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+#favorites-page {
+  position: relative;
+  height: 100vh; /* Set to 100% of the viewport height */
+  }
+  #favorites-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://c0.wallpaperflare.com/preview/909/659/786/book-girl-magic-fairy-tales.jpg');
+    background-size: cover;
+    opacity: 0.8; /* Set the opacity of the image here */
+    z-index: -1; /* This will keep the image behind the content */
+  }
+
+  h2 {
+    color: #6e0843c7;
+    font-size: 36px;
+    margin: 0; /* Remove default margins */
+    margin-bottom: 50px; /*Add a bottom margin */
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-color: rgba(255, 255, 255, 0.5); /* Light background color with transparency */
+    padding: 10px;
+    border-radius: 5px; /* Add rounded corners to the background */
+    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff; /* Add a white outline to the text */
+  }
+  
+  .favorite-list {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -40%); /* Adjust the position slightly underneath the h2 element */
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin-top: 70px; /* Add margin to move the list below the h2 element */
+  }
+  
+  .favorite-list li {
+    color: #011315;
+    font-size: 24px;
+    background-color: rgba(255, 255, 255, 0.684); /* Light background color with transparency */
+    padding: 5px;
+    border-radius: 5px; /* Add rounded corners to the background */
+    margin-bottom: 10px; /* Add some space between list items */
+    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff; /* Add a white outline to the text */
+  }
+  
+  

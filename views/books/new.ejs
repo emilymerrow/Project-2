@@ -1,14 +1,15 @@
-<% include('../partials/header') %>
+<%-include('../partials/header') %>
 
 <!-- the template for the form where users can submit a new book -->
 <form id="new-form" action="/books" method="POST">
-    <label>Title:</label>
+   <!-- <img src="https://lumiere-a.akamaihd.net/v1/images/p_thechronicalsofnarnia_lionwitchwadrobe_19890_fe46d195.jpeg" alt="Book Picture"> -->
+    <label>Title</label>
         <input type="text" name="title">
-    <label>Author:</label>
+    <label>Author</label>
         <input type="text" name="author">
-    <label>Year Published:</label>
+    <label>Year Published</label>
         <input type="text" name="yearPublished">
-    <label>Genre:</label>
+    <label>Genre</label>
         <input type="text" name="genre">
         <input type="submit" value="Add Book">
 
