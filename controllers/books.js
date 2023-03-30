@@ -32,7 +32,9 @@ function create(req, res) {
 //this function handles a GET request to the "/books" endpoint
 function index(req, res) {
   //Find all the books in the database (BookModel collection)
-  BookModel.find({})
+
+  BookModel.find({}) //BookModel.find is our mangoose model going to mongodb to find all the books in the books collection
+  //when the model comes back from the database we want a function to run, and that is .then
     .then(function (allBooks) { //it renders the "index" view passing in an object with a key of "books"
       res.render("books/index", { books: allBooks });  //and a value of all the books found in the database
     })
@@ -52,17 +54,15 @@ function show(req, res) {
     .then(function (bookDoc) {  //if the book is found, it's passed to the then function
       console.log(bookDoc,'this is the bookDoc for Book'); // <- bookDoc is the object from the database!
 
-      // Goal: TO find all of the users that have favorited the book
-      // 1. find the book (bookDoc) so we know what users have favorited it
-      // 2. Use the UserModel to query the users collection to find all the users
-      // whose id is in the bookDoc.favorites array
+     //find a book by ID, populate its "favorites" property with user data
+     // and render a page that shows the book's details
       UserModel.find(
-        { _id: { $in: bookDoc.favorites } } // find all the users whose ids are in ($in) the bookDoc.favorites array
+        { _id: { $in: bookDoc.favorites } } // find all the users who have favorited the book
       )
-        .then(function (usersWhoFavoritedBook) {
+        .then(function (usersWhoFavoritedBook) {  //if book favorites are found, they're passed to the `then`
           res.render("books/show", {
-            book: bookDoc, // this has the favorites array, the users who favorited the book
-            usersWhoFavoritedBook, // this is for our dropdown menu
+            book: bookDoc, 
+            usersWhoFavoritedBook, 
           });
         })
         .catch(function (err) {
