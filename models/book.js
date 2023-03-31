@@ -33,9 +33,11 @@ const bookSchema = new mongoose.Schema(
     },
 
   {
-    timestamps: true,
+    timestamps: true, //store the creation and last update times
   }
 );
+
+// adds a function to the favoriteSchema that retrieves the title of the related book.
 favoriteSchema.methods.getBookTitle = function() {
   return this.parent().title;
 };

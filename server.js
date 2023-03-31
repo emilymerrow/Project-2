@@ -14,7 +14,7 @@ const booksRouter = require('./routes/books');
 const indexRouter = require('./routes/index');
 
 const favoritesRouter = require('./routes/favorites');
-const authorsRouter = require('./routes/authors');
+
 // create the Express app
 const app = express();
 
@@ -61,56 +61,9 @@ app.use('/', indexRouter);
 app.use('/books', booksRouter);
 
 app.use('/favorites', favoritesRouter);
-app.use('/', authorsRouter);
-
-// When the user favorites a book, add its ID to a cookie
-// app.post('/favorite', (req, res) => {
-//   const { bookId } = req.body;
-//   const favorites = req.cookies.favorites || [];
-//   favorites.push(bookId);
-//   res.cookie('favorites', favorites);
-//   res.redirect('/');
-// });
-
-// app.post('/favorite', async (req, res) => {
-//   try {
-//     const { bookId } = req.body;
-//     const book = await Book.findById(bookId);
-//     if (!book) {
-//       return res.status(404).send('Book not found');
-//     }
-//     book.favorites.push({ is_favorite: true });
-//     await book.save();
-//     res.redirect('/books/' + bookId);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Error adding book to favorites');
-//   }
-// });
 
 
-// // Display the user's favorite books by retrieving the favorites cookie
-// // app.get('/favorites', async (req, res) => {
-// //   const favorites = req.cookies.favorites || [];
-// //   const books = await Book.find({ _id: { $in: favorites } });
-// //   res.render('favorites', { books });
-// // });
 
-// app.get('/books/:id/favorite', async (req, res) => {
-//   try {
-//     const book = await Book.findById(req.params.id);
-//     if (!book) {
-//       return res.status(404).send('Book not found');
-//     }
-//     const favorites = req.cookies.favorites || [];
-//     favorites.push(book._id);
-//     res.cookie('favorites', favorites);
-//     res.redirect('/books/' + req.params.id);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Error adding book to favorites');
-//   }
-// });
 
 
 // invalid request, send 404 page

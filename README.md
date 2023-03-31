@@ -64,8 +64,7 @@ If you encounter any issues or have any feedback, please don't hesitate to reach
 
 ### Installation
 
- Clone the repository
-git clone https://github.com/yourusername/childrens-books-library.git
+ https://maroon-mackerel-kilt.cyclic.app
 
 
 ## Next Steps
